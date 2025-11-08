@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: this is a yaml test script
+# Parameters:
+#   Resources:
+#     Type: string
+#     Default: 172.0.0.0/16
+
+Resources:
+  TestYamlVpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 172.0.0.0/16
+      Tags: 
+      - Key: Name
+        Value: yaml-test
+  TestYamlPublicSubnet:
+      Type: AWS::EC2::Subnet
+      Properties:
+        VpcId: !Ref TestYamlVpc
+        CidrBlock: 172.0.1.0/24
+        AvailabilityZone: "us-east-1a"
+        Tags:
+        - Key: Name
+          Value: yaml-test-pub-1
